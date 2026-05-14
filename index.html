@@ -10,7 +10,23 @@
     <script src="https://app.singlepay.com.br/upsell.js?v=1.1" defer async></script>
 
     <script>
-        window.pixelId = "69ffed4b54f912bb3fa20bd7";
+        // 1. Defina seus IDs aqui em cima para facilitar a alteração
+        const pixel1 = "69ffed4b54f912bb3fa20bd7";
+        const pixel2 = "6a0523b4fcc1cdc506d6784c";
+
+        // 2. Captura o parâmetro 'px' da URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const px = urlParams.get('px');
+
+        // 3. Lógica de atribuição
+        if (px === '2') {
+            window.pixelId = pixel2;
+        } else {
+            // Se for px=1, se o parâmetro não existir ou for qualquer outro valor
+            window.pixelId = pixel1;
+        }
+
+        // 4. Carregamento do script do UTMIFY
         var a = document.createElement("script");
         a.setAttribute("async", "");
         a.setAttribute("defer", "");
